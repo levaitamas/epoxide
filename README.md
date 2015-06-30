@@ -40,6 +40,50 @@ to your initialization file.
   (eval-after-load 'tramp '(tramp-mininet-setup))
 ```
 
+# Usage
+
+## Demos
+
+Execute a troubleshooting graph.
+![epoxide-execution](doc/epoxide-exe.gif)
+
+Navigate between nodes.
+![epoxide-navigation](doc/epoxide-nav.gif)
+
+Use views to modify layout of the windows.
+![epoxide-views](doc/epoxide-view.gif)
+
+## Keyboard shortcuts
+
+Troubleshooting Graph (TSG) execution:
+
+- <kbd>C-x C-e</kbd> clears and starts execution of the TSG
+- <kbd>C-c C-e</kbd> starts the execution of the TSG
+
+TSG modification:
+
+- <kbd>C-c C-a</kbd> adds a new node to the TSG
+- <kbd>C-c C-r</kbd> restarts a node
+
+Navigation, views, etc:
+
+- <kbd>v</kbd> shows Epoxide variable list
+- <kbd>c</kbd> customise Epoxide variables
+- <kbd>C-x C-b</kbd> shows the Epoxide specific Ibuffer list
+- <kbd>C-x g</kbd> and <kbd>M-x t</kbd> show the TSG visualisation
+- <kbd>M-g e</kbd> shows the TSG file
+- <kbd>C-x n</kbd> jumps to the following node
+- <kbd>C-x p</kbd> jumps to the preceding node
+- <kbd>C-c C-o</kbd> shows all output buffer of the active node
+- <kbd>M-n</kbd> jumps to the next buffer in TSG
+- <kbd>M-p</kbd> jumps to the previous buffer in TSG
+- <kbd>C-[1-9] M-g v</kbd> activates View #[1-9]
+- <kbd>M-N</kbd> activates next View
+- <kbd>M-P</kbd> activates previous View
+
+## Implement new nodes
+
+
 # Acknowledgement
 
 The research leading to these results has received funding from the
