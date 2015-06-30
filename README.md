@@ -53,7 +53,7 @@ Navigate between nodes.
 Use views to modify layout of the windows.
 ![epoxide-views](doc/epoxide-view.gif)
 
-## Creating new troubleshooting graphs
+## Edit troubleshooting graphs
 
 Epoxide uses a Click-inspired language for describing troubleshooting
 graphs (TSGs). TSGs are stored in `.tsg` files, as an example take a
@@ -83,10 +83,13 @@ TSG and the nodes.
 
 ## Implement new nodes
 
-The functionality of Epoxide can be easily extended by implementing
-new nodes. Nodes are written in [Emacs
+Currently, Epoxide can only provide a limited number of predefined
+nodes, therefore, can not cover every unique use-case. On such
+occasions, the functionality of Epoxide can be easily extended by
+implementing new nodes. Nodes are written in [Emacs
 Lisp](http://www.emacswiki.org/emacs/EmacsLisp) using some
-Epoxide-specific data structure.
+Epoxide-specific data structure which are well-documented in the
+source code.
 
 To implement a new node the following three Epoxide framework-specific
 function have to be included in the node describing file:
