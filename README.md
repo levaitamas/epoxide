@@ -44,14 +44,75 @@ to your initialization file.
 
 ## Demos
 
-Execute a troubleshooting graph.
-![epoxide-execution](doc/epoxide-exe.gif)
+Execute and modify a troubleshooting graph.
+![epoxide-execution](doc/epoxide-exec.gif)
 
 Navigate between nodes.
 ![epoxide-navigation](doc/epoxide-nav.gif)
 
 Use views to modify layout of the windows.
 ![epoxide-views](doc/epoxide-view.gif)
+
+## Creating new troubleshooting graphs
+
+Epoxide uses a Click-inspired language for describing troubleshooting
+graphs (TSGs). TSGs are stored in `.tsg` files, as an example take a
+look at the content of [pingview.tsg](examples/pingview.tsg).
+
+```
+// Nodes
+view :: View(1, 2);
+ping0 :: Ping(localhost, yahoo.com);
+ping1 :: Ping(localhost, google.com);
+filter0 :: Filter(time=\([2-9][0-9]\|[1-9][0-9]\{2,\}\).*[0-9]* ms$);
+filter1 :: Filter(time=\([2-9][0-9]\|[1-9][0-9]\{2,\}\).*[0-9]* ms$);
+
+// Links
+ping0 -> filter0 -> view;
+ping1 -> filter1 -> [1]view;
+```
+
+As you can see, TSG description has two main logical parts: the first
+is the description of nodes and views of the troubleshooting graph and
+the second is the description of the links between them.
+
+It is really easy to create new TSGs or modify existing ones due to
+the convenient TSG editing features of Epoxide: syntax highlighting;
+Eldoc integration; keyboard shortcuts for controlling execution of the
+TSG and the nodes.
+
+## Implement new nodes
+
+The functionality of Epoxide can be easily extended by implementing
+new nodes. Nodes are written in [Emacs
+Lisp](http://www.emacswiki.org/emacs/EmacsLisp) using some
+Epoxide-specific data structure.
+
+To implement a new node the following three Epoxide framework-specific
+function have to be included in the node describing file:
+
+- `epoxide-nodename-start` is called when the node initialises
+
+- `epoxide-nodename-exec` contains the function of the node, this is
+  the function called by the scheduler during TSG execution
+
+- `epoxide-nodename-stop` is called when the node stops
+
+Additional documentation-aiding functions can be added to a node:
+
+- `epoxide-nodename-input-info` provides documentation, value tips and
+  validation for input fields
+
+- `epoxide-nodename-config-info` provides documentation, value tips
+  and validation for configuration fields
+
+- `epoxide-nodename-output-info` provides documentation, value tips
+  and validation for output fields
+
+The node definition file should be placed in the `src/nodes/` as
+`Nodename.el`.
+
+As an example take a look at the [Ping node](src/nodes/Ping.el).
 
 ## Keyboard shortcuts
 
@@ -80,8 +141,6 @@ Navigation, views, etc:
 - <kbd>C-[1-9] M-g v</kbd> activates View #[1-9]
 - <kbd>M-N</kbd> activates next View
 - <kbd>M-P</kbd> activates previous View
-
-## Implement new nodes
 
 
 # Acknowledgement
