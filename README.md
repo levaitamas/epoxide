@@ -65,19 +65,19 @@ afraid, the learning curve of Epoxide is not really steep if you are
 familiar with Emacs. Returning to our demo scenario, executing a TSG
 describing the troubleshooting process itself is just opening the
 corresponding `.tsg` file (for further details see 'Edit
-troubleshooting graphs'). You can simply do that by issuing a `C-x C-f
-~/.emacs.d/elpa/epoxide-0.6.3/examples/ping.tsg RET`. Depending on
-your setup the execution starts automatically or you have to press
-`C-x C-e y` to start the execution. As the execution starts, the Emacs
-frame splits horizontally and you can see the `.tsg` file and the
-output of the last link in the TSG. Currently it is the output of
-`ping` with lines emphasised in case of greater or equal than 20 ms
-response time.
+troubleshooting graphs'). You can simply do that by issuing a <kbd>C-x
+C-f ~/.emacs.d/elpa/epoxide-0.6.3/examples/ping.tsg
+RET</kbd>. Depending on your setup the execution starts automatically
+or you have to press <kbd>C-x C-e y</kbd> to start the execution. As
+the execution starts, the Emacs frame splits horizontally and you can
+see the `.tsg` file and the output of the last link in the
+TSG. Currently it is the output of `ping` with lines emphasised in
+case of greater or equal than 20 ms response time.
 
-Let us suppose that we want to check the connectivity with an other
+Let us suppose that we want to check the connectivity with a different
 target. It is really simple to that with Epoxide. All you have to do
 is modifying the second parameter of Ping and reevaluate the `.tsg`
-file with `C-x C-e y`.
+file with <kbd>C-x C-e y</kbd>.
 
 ![epoxide-execution](doc/epoxide-exec.gif)
 
